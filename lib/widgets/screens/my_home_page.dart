@@ -1,5 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'comments_screen.dart';
+import 'epayment_screen.dart';
+import 'login_screen.dart';
+import 'post_screen.dart';
+import 'posts_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -20,48 +25,76 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
+          children: <Widget>[
+            const Text(
               'Pick one of the choices below to call free APIs',
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             CustomListTile(
               title: 'All Posts',
               leading: 'GET',
               color: Colors.green,
-              onTap: null,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const PostsScreen(),
+                  ),
+                );
+              },
             ),
             CustomListTile(
               title: 'Post with Id',
               leading: 'GET',
               color: Colors.green,
-              onTap: null,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const PostScreen(
+                      postId: '1',
+                    ),
+                  ),
+                );
+              },
             ),
             CustomListTile(
-              title: 'Comments for Post with Id (1)',
+              title: 'Comments for Post with Id',
               leading: 'GET',
               color: Colors.green,
-              onTap: null,
-            ),
-            CustomListTile(
-              title: 'Comments for Post with Id (2)',
-              leading: 'GET',
-              color: Colors.green,
-              onTap: null,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const CommentsScreen(
+                      postId: '1',
+                    ),
+                  ),
+                );
+              },
             ),
             CustomListTile(
               title: 'User Login',
               leading: 'POST',
               color: Colors.amber,
-              onTap: null,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
             ),
             CustomListTile(
               title: 'Payment gateway (Chargily)',
               leading: 'POST',
               color: Colors.amber,
-              onTap: null,
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const EpaymentScreen(),
+                  ),
+                );
+              },
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
           ],
         ),
       ),
