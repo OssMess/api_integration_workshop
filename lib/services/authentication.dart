@@ -17,7 +17,12 @@ class Authentication {
     var headers = {'Content-Type': 'application/json'};
     var request =
         http.Request('POST', Uri.parse('${PrivateValues.authBaseUrl}$login'));
-    request.body = json.encode({'mail': email, 'password': password});
+    request.body = json.encode(
+      {
+        'mail': email,
+        'password': password,
+      },
+    );
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {

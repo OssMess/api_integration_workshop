@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
     return FutureBuilder(
       future: Authentication.loginWithEmailPassword(
         email: 'oussama.messaoudi.info@gmail.com',
-        password: 'aR23s7BV0NTQ17551MdEYTxvtjy1',
+        password: 'aR23s7BV0NTQ17551MdEYTxvtjy',
       ),
       builder: (context, snapshot) {
         return Scaffold(

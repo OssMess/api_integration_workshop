@@ -30,7 +30,6 @@ class JsonPlaceHolder {
   }
 
   static Future<Post> getPostById(String id) async {
-    await Future.delayed(const Duration(seconds: 2));
     var request = http.Request(
       'GET',
       Uri.parse(
