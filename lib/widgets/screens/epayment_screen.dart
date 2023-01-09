@@ -18,7 +18,7 @@ class EpaymentScreen extends StatelessWidget {
         clientEmail: 'o.messaoudi@univ-batna2.dz',
         amount: 75,
         invoiceNumber: '0098765385',
-        mode: PaymentMode.edahabia(),
+        mode: PaymentMode.EDAHABIA,
         comment: 'Test comment',
       ),
       builder: (context, snapshot) {

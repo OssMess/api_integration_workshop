@@ -50,7 +50,7 @@ class ChargilyGateway {
       "back_url": "https://developers.google.com", //you
       "webhook_url":
           "https://mybackend.cloudfunctions.net/chargilyPaymentConfirmationRequest",
-      "mode": mode.value,
+      "mode": paymentModeToString(mode),
       "discount": 0,
       "comment": comment,
     });
@@ -69,13 +69,31 @@ class ChargilyGateway {
   }
 }
 
-class PaymentMode {
-  final String value;
+enum PaymentMode {
+  // ignore: constant_identifier_names
+  EDAHABIA,
+  // ignore: constant_identifier_names
+  CIB,
+}
 
-  PaymentMode({
-    required this.value,
-  });
+String paymentModeToString(PaymentMode value) {
+  switch (value) {
+    case PaymentMode.EDAHABIA:
+      return 'EDAHABIA';
+    case PaymentMode.CIB:
+      return 'CIB';
+    default:
+      throw Exception('Value not in range');
+  }
+}
 
-  factory PaymentMode.edahabia() => PaymentMode(value: 'EDAHABIA');
-  factory PaymentMode.cib() => PaymentMode(value: 'CIB');
+PaymentMode stringToPaymentMode(String value) {
+  switch (value) {
+    case 'EDAHABIA':
+      return PaymentMode.EDAHABIA;
+    case 'CIB':
+      return PaymentMode.CIB;
+    default:
+      throw Exception('Value not in range');
+  }
 }
